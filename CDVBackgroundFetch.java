@@ -2,6 +2,7 @@ package com.transistorsoft.cordova.backgroundfetch;
 
 import com.transistorsoft.tsbackgroundfetch.BackgroundFetch;
 import com.transistorsoft.tsbackgroundfetch.BackgroundFetchConfig;
+import com.transistorsoft.tsbackgroundfetch.LifecycleManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,6 +43,8 @@ public class CDVBackgroundFetch extends CordovaPlugin {
     @Override
     public void onDestroy() {
         Log.d(BackgroundFetch.TAG, "[CDVBackgroundFetch] onDestroy");
+        LifecycleManager.getInstance().setHeadless(true);
+        super.onDestroy();
     }
     public void onNewIntent(Intent intent) {
         Log.d(BackgroundFetch.TAG, "[CDVBackgroundFetch] onNewIntent");
