@@ -5,7 +5,7 @@ async function onDeviceReady() {
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
-    await window.stepper.disableBatteryOptimizations();
+    await initStepper();
     await initBackgroundFetch();
 }
 
@@ -34,4 +34,18 @@ async function initBackgroundFetch() {
     } else {
       console.log("[BackgroundFetch] STARTS: ", status);
     }
+  }
+
+  async function initStepper() {
+    await window.stepper.requestPermission();
+    await window.stepper.disableBatteryOptimizations();
+    window.stepper.startStepperUpdates(
+        {},
+        (result) => {
+            console.log("Steps detected", result);
+        },
+        (error) => {
+          console.error("Pedometer error", error);
+        }
+      );
   }
