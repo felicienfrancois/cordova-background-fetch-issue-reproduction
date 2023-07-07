@@ -10,5 +10,6 @@
     <allow-intent href="https://*/*" />
     <platform name="android">
       <resource-file src="BackgroundFetchHeadlessTask.java" target="app/src/main/java/com/transistorsoft/cordova/backgroundfetch/BackgroundFetchHeadlessTask.java" />
+      <resource-file src="CDVBackgroundFetch.java" target="app/src/main/java/com/transistorsoft/cordova/backgroundfetch/CDVBackgroundFetch.java" />
     </platform>
 </widget>
